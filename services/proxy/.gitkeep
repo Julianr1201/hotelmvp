@@ -1,0 +1,3 @@
+# Esta carpeta contiene la configuración de NGINX Proxy Manager
+# Los datos se almacenan en ./data/ y no se versionan
+

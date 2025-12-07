@@ -1,0 +1,38 @@
+# Archivo de variables de entorno (contiene secretos)
+.env
+
+# Carpetas de configuración con datos sensibles
+services/proxy/data/
+services/jellyfin/config/
+services/home-assistant/config/
+services/openwisp/config/
+services/openwisp/data/
+
+# Carpeta de medios (no versionar archivos multimedia)
+media/
+*.mp4
+*.mkv
+*.avi
+*.mp3
+*.flac
+*.jpg
+*.jpeg
+*.png
+
+# Logs
+*.log
+logs/
+
+# Archivos temporales
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+volumes/
+
+# Backups (opcional, descomentar si no quieres versionar backups)
+# backups/
+
