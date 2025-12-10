@@ -1,0 +1,91 @@
+version: "3.9"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
+    restart: unless-stopped
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    ports:
+      - "1883:1883" # MQTT para Home Assistant y dispositivos
+      # - "9001:9001" # (opcional) WebSocket MQTT si lo habilitas en el config
+
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    environment:
+      - TZ=America/Chihuahua
+    volumes:
+      - ./homeassistant:/config
+    ports:
+      - "8123:8123" # Panel web de Home Assistant
+
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    environment:
+      - TZ=America/Chihuahua
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - /mnt/media:/media # Ajusta esta ruta al disco donde pongas las pelis/series
+    ports:
+      - "8096:8096" # Panel y streaming Jellyfin
+
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    restart: unless-stopped
+    hostname: pihole
+    environment:
+      - TZ=America/Chihuahua
+      - WEBPASSWORD=${PIHOLE_WEBPASSWORD}
+      - DNS1=1.1.1.1
+      - DNS2=1.0.0.1
+      - ServerIP=${PIHOLE_SERVER_IP} # IP LAN de la PC de recepción
+    volumes:
+      - ./pihole/etc-pihole:/etc/pihole
+      - ./pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8053:80/tcp" # Panel web de Pi-hole (Moved to 8053 to avoid conflict)
+    cap_add:
+      - NET_ADMIN
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/data:/prometheus
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - TZ=America/Chihuahua
+    volumes:
+      - ./grafana:/var/lib/grafana
+    ports:
+      - "3000:3000"
+
+networks:
+  default:
+    name: hotel_stack_net
+    driver: bridge
