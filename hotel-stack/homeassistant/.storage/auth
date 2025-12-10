@@ -14,6 +14,17 @@
         "name": "Home Assistant Content",
         "system_generated": true,
         "local_only": false
+      },
+      {
+        "id": "022295cb40cd45728f95bfe8d0bd9d50",
+        "group_ids": [
+          "system-admin"
+        ],
+        "is_owner": true,
+        "is_active": true,
+        "name": "Julian Eduardo Rodriguez Valenzuela",
+        "system_generated": false,
+        "local_only": false
       }
     ],
     "groups": [
@@ -30,7 +41,17 @@
         "name": "Read Only"
       }
     ],
-    "credentials": [],
+    "credentials": [
+      {
+        "id": "1c9ff7ab0d5e47a2abe2acbc4fc403f7",
+        "user_id": "022295cb40cd45728f95bfe8d0bd9d50",
+        "auth_provider_type": "homeassistant",
+        "auth_provider_id": null,
+        "data": {
+          "username": "julianr1201@gmail.com"
+        }
+      }
+    ],
     "refresh_tokens": [
       {
         "id": "997938699b4d467090a647e675a86043",
@@ -47,6 +68,23 @@
         "last_used_ip": null,
         "expire_at": null,
         "credential_id": null,
+        "version": "2025.12.2"
+      },
+      {
+        "id": "c6a9026e467c437181191bdf14738b86",
+        "user_id": "022295cb40cd45728f95bfe8d0bd9d50",
+        "client_id": "http://localhost:8123/",
+        "client_name": null,
+        "client_icon": null,
+        "token_type": "normal",
+        "created_at": "2025-12-10T15:56:08.115383+00:00",
+        "access_token_expiration": 1800.0,
+        "token": "81a262540fb55b75bd4a0c6d21aa533a1973b79312def7e4744bd7f850570be54f3c0a0bbfcc82ce21d51bfd798105d22462ab4d27b62aee4b3e5f03a61374a9",
+        "jwt_key": "a10bc0b297eaad1ab398ad403a70296cd3c1b6e08c5908da4e21a94c9ee76aef0a3f06b70b280cff98e524bfae1fa570e0d68432bd441b8e668e91ea7fce6071",
+        "last_used_at": "2025-12-10T15:56:08.115469+00:00",
+        "last_used_ip": "172.22.0.1",
+        "expire_at": 1773158168.115469,
+        "credential_id": "1c9ff7ab0d5e47a2abe2acbc4fc403f7",
         "version": "2025.12.2"
       }
     ]

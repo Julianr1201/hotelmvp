@@ -5,3 +5,15 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
+
+  - job_name: 'mosquitto'
+    static_configs:
+      - targets: ['mosquitto:1883'] # Requires mosquitto-exporter usually, but checking connectivity
+
+  # Home Assistant (Requires Long-Lived Access Token)
+  # Uncomment and add token after creating it in HA Profile
+  # - job_name: 'homeassistant'
+  #   metrics_path: /api/prometheus
+  #   bearer_token: 'YOUR_LONG_LIVED_ACCESS_TOKEN'
+  #   static_configs:
+  #     - targets: ['homeassistant:8123']

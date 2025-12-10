@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "minor_version": 1,
+  "key": "person",
+  "data": {
+    "items": [
+      {
+        "id": "julian_eduardo_rodriguez_valenzuela",
+        "name": "Julian Eduardo Rodriguez Valenzuela",
+        "user_id": "022295cb40cd45728f95bfe8d0bd9d50",
+        "device_trackers": []
+      }
+    ]
+  }
+}

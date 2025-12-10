@@ -35,7 +35,10 @@ services:
     volumes:
       - ./jellyfin/config:/config
       - ./jellyfin/cache:/cache
-      - /mnt/media:/media # Ajusta esta ruta al disco donde pongas las pelis/series
+      - ./media:/media
+      - C:\Users\CTRE DESIGN STUDIOS\Videos:/media/windows/videos:ro
+      - C:\Users\CTRE DESIGN STUDIOS\Music:/media/windows/music:ro
+      - C:\Users\CTRE DESIGN STUDIOS\Pictures:/media/windows/pictures:ro
     ports:
       - "8096:8096" # Panel y streaming Jellyfin
 

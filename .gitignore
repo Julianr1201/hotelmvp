@@ -36,3 +36,6 @@ volumes/
 # Backups (opcional, descomentar si no quieres versionar backups)
 # backups/
 
+
+# Hotel Stack Data
+hotel-stack/**/data/

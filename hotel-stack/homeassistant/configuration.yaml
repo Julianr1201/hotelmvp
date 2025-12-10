@@ -6,6 +6,29 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
+# Text to speech
+tts:
+  - platform: google_translate
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+# HTTP Configuration (Required for Docker/Proxy)
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - 172.16.0.0/12  # Docker Subnet Range
+    - 192.168.0.0/16 # Local Network
+
+# MQTT Integration (Connects to Mosquitto)
+mqtt:
+  broker: mosquitto
+  port: 1883
+  # username: "mqtt_user" # Configure if you set up auth in Mosquitto
+  # password: "mqtt_password"
+
+# Prometheus Exporter (Exposes metrics for Grafana)
+prometheus:
+  namespace: hass

@@ -1,1 +1,1 @@
-{"StartTimeUtc":"2025-12-09T22:53:05.3321455Z","EndTimeUtc":"2025-12-09T22:53:05.3475329Z","Status":"Completed","Name":"Clean up collections and playlists","Key":"CleanCollectionsAndPlaylists","Id":"3a025083141d3c17dd96d5f9b951287b"}
+{"StartTimeUtc":"2025-12-10T16:06:29.0429386Z","EndTimeUtc":"2025-12-10T16:06:29.0503912Z","Status":"Completed","Name":"Limpieza de colecciones y listas de reproducci\u00F3n","Key":"CleanCollectionsAndPlaylists","Id":"3a025083141d3c17dd96d5f9b951287b"}
